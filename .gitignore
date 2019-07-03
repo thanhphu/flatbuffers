@@ -113,3 +113,9 @@ dart/doc/api/
 Cargo.lock
 .corpus**
 .seed**
+
+
+CPackConfig.cmake
+CPackSourceConfig.cmake
+compile_commands.json
+grpc/google/
