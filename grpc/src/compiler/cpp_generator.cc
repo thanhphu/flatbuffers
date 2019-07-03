@@ -146,12 +146,14 @@ grpc::string GetHeaderIncludes(grpc_generator::File* file,
     PrintIncludes(printer.get(), headers, params.use_system_headers,
                   params.grpc_search_path);
     printer->Print(vars, "\n");
-    printer->Print(vars, "namespace grpc {\n");
-    printer->Print(vars, "class CompletionQueue;\n");
-    printer->Print(vars, "class Channel;\n");
-    printer->Print(vars, "class ServerCompletionQueue;\n");
-    printer->Print(vars, "class ServerContext;\n");
-    printer->Print(vars, "}  // namespace grpc\n\n");
+
+    // This will cause a redefinition error with newer versions of grpc
+    // printer->Print(vars, "namespace grpc {\n");
+    // printer->Print(vars, "class CompletionQueue;\n");
+    // printer->Print(vars, "class Channel;\n");
+    // printer->Print(vars, "class ServerCompletionQueue;\n");
+    // printer->Print(vars, "class ServerContext;\n");
+    // printer->Print(vars, "}  // namespace grpc\n\n");
 
     if (!file->package().empty()) {
       std::vector<grpc::string> parts = file->package_parts();
